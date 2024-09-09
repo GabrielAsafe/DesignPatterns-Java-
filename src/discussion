@@ -1,0 +1,133 @@
+Creational design pattern
+
+    ***
+	creational.Builder: O creational.Builder é um padrão de projeto criacional utilizado em situações onde um objeto precisa ser construído de maneira controlada e complexa, permitindo que você crie diferentes representações de um objeto passo a passo. Esse padrão é particularmente útil quando a criação de um objeto envolve várias etapas ou quando o objeto possui uma grande quantidade de parâmetros opcionais.
+
+		Características:
+
+			Separação de Construção e Representação: O creational.Builder separa a construção do objeto (o processo passo a passo) da sua representação final. Isso facilita a criação de diferentes representações do objeto usando o mesmo processo de construção.
+
+			Construção Passo a Passo: O creational.Builder permite que o objeto seja construído em etapas, adicionando cada parte ao objeto de forma sequencial. Isso é útil para objetos complexos que possuem muitas partes ou propriedades que podem ser configuradas de maneira diferente.
+
+			Produto Imutável: O objeto final construído geralmente é imutável, garantindo que ele não será alterado após sua criação.
+
+		Composição:
+
+			diretor:
+				usa o builder (instancia)
+				sabe a sequência de passos para a construção de um produto(objeto final)
+				tem uma implementação do tipo do produto para referenciá-lo depois
+
+			builder:
+				interface/classe abstrata para construção do builder com gets e um método build
+
+			concreteBuilder:
+				implementa o builder
+
+			product:
+				classe final
+
+
+		Implementação:
+			olha no código
+
+
+	Simple factory:	O padrão de projeto Simple creational.Factory é um padrão de criação que encapsula a lógica de criação de objetos dentro de uma única classe. Ao contrário de padrões como creational.Factory Method ou Abstract creational.Factory, o Simple creational.Factory não é um dos "padrões de projeto" formais descritos por Gamma et al. no livro Design Patterns: Elements of Reusable Object-Oriented Software. No entanto, ele é uma prática comum e amplamente usada na programação orientada a objetos.
+
+		Características:
+
+			creational.Factory: A classe que contém o método para criar objetos. Este método geralmente é estático, o que facilita a criação de objetos sem a necessidade de instanciar a fábrica.
+
+			Produto: A interface ou classe abstrata que define o tipo dos objetos que a fábrica criará.
+
+			Produtos Concretos: As implementações específicas da interface ou classe abstrata Produto.
+
+
+		Composição:
+			Client:
+				main class
+
+			Static Simple creational.Factory:
+				provê uma classe estática para selecionar qual instância do produto queremos
+
+			Product:
+				template de produto ?
+
+
+			Product instance:
+				tipos de produto
+
+
+	factory que separa o construtor numa sub classe. funciona com um unico produto, logo ele não interage ou se importa com outros produtos, diferente da abstract que tem vários produtos ao mesmo tempo e eles interagem
+
+	abstract factory que separa os "produtos em sets" tem o produto A que acessa os sub-produtos relacionados ao produto A e o produto B que acessam os subprodutos do produto B
+
+
+
+
+
+	creational.Prototype: O padrão creational.Prototype permite criar novos objetos ao copiar um "protótipo" existente em vez de criar novos do zero. Isso é útil quando o custo de criação de um objeto é caro (em termos de tempo ou recursos) e queremos evitar esse custo sempre que for necessário criar novos objetos do mesmo tipo.
+
+		ter atenção ao tipo de cópia(deep or shallow)
+
+		Características:
+			O padrão creational.Prototype envolve a criação de uma interface ou classe base que define um método para clonar objetos. Os objetos que implementam essa interface podem, assim, ser copiados, permitindo a criação de novos objetos a partir de instâncias existentes.
+
+		Composição:
+
+			creational.Prototype (Protótipo): Esta é a interface que declara o método clone(). Esse método é responsável por retornar uma cópia do objeto.
+
+			ConcretePrototype (Protótipo Concreto): Implementa a interface creational.Prototype e define o método clone(). Aqui, o método realiza a cópia do próprio objeto.
+
+			Client (Cliente): Usa o método clone() do objeto creational.Prototype para criar um novo objeto.
+
+
+
+
+
+	singleton: just don't
+
+
+	Object Pool:
+	        Não use isso para salvar alguns megas de memória amenos que seja alguma cena absurda. Geralmente faz sentido para coisas que são realmente custosas de se fazer
+
+	        o objeto tem de ser corretamente devolvido a pool, senão não adianta nada
+
+	        pools devem ter um tamanho aceitável. se ela for muito grande não faz sentido ter a pool
+
+
+
+Structural design patterns
+    bridge: acho que errei no código dos shapes e o de cima acho que não deveria ter uma classe abstrata. se tiver uma relação fracamente acoplada e for tipo 1 -> n é válido usar.
+
+    composite: meio merda
+
+    facade: é um main que chama todas as classes de um único ponto tipo um wrapper. ou seja, meio merda. se tiver a usar exite grande chance de tu não saber o que tá a fazer e seu código estar uma merda
+
+    flyweight: esse é interessante. ele compartilha entre objetos aspectos repetidos. se partilham os mesmos dados esses dados não são duplicados.
+
+    proxy: cria uma fachada para o objeto. pode servir de cache para dados requisitados frequentemente. também serve para lazyloading dos objetos. trabalha em conjunto com uma factory
+
+
+
+behavioral design patterns
+
+    ***
+    chain of responsability: caso um objeto não seja capaz de resolver algum problema passa para o próximo até poder resolver.
+
+    Command:executa uma função em outro lugar como se ela fosse um objeto. ???? tem mais downsides do que pontos positivos
+
+    interpreter: problema -> problemas para interpretação de gramática
+
+
+    mediator: evita que os objetos fiquem fortemente ligados. os objetos falam com o medietor e ele faz um breadcast ou encaminhamento de mensagem
+
+    memento:mantem uma lista de passos feitos permitindo desfazê-los caso precise. famoso control z
+
+    ***
+    visitor: permite alterar o comportamento de uma classe sem alterar a classe diretamente
+
+
+    template method: cria um template para uma função que será reimplemtenatada. ela mantem os passos mal altera as partes importantes para cada função que a vá reimplementar.
+
+
