@@ -1,6 +1,5 @@
+[Design patterns](https://refactoring.guru/design-patterns)
 
-
-<a href=“[http://exemplo.com/](https://refactoring.guru/design-patterns)“>Design pattern reference</a>
 ---
 
 # Padrões de Projeto (Design Patterns)
@@ -289,5 +288,3 @@ O `State` permite que um objeto altere seu comportamento quando o seu estado int
 - **Complexidade:** O padrão `State` pode aumentar a complexidade do código ao introduzir várias classes para representar os estados.
 
 ---
-
-Se precisar de mais alguma alteração ou algum detalhe adicional, é só me avisar!
